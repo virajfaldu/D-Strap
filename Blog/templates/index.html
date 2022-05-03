@@ -1,0 +1,125 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}
+<title>D-Strap || Home</title>
+{%endblock%}
+
+<body>
+
+  {% block content %}
+  <!-- Page Content -->
+  <!-- Banner Starts Here -->
+  <div class="main-banner header-text">
+    <div class="container-fluid">
+      <div class="owl-banner owl-carousel">
+        {% for cate in cat %}
+
+        <div class="item">
+          <a href="{% url 'category' name=cate.name%}"><img src="media/{{cate.img}}" width="680px" height="430px" style="filter: brightness(75%);"></a>
+          <div class="item-content">
+            <div class="main-content">
+              <div class="meta-category">
+                <a href="{% url 'category' name=cate.name%}"><span>{{cate.name}}</span></a>
+              </div>
+                <h4>{{cate.desc}}</h4>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+      </div>
+    </div>
+  </div>
+  <!-- Banner Ends Here -->
+
+
+  <section class="blog-posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="all-blog-posts">
+            <div class="row">
+              <div class="col-lg-12">
+                {% for post in posts %}
+                <div class="blog-post">
+                  <div class="blog-thumb">
+                    <img src="media/{{post.img}}" alt="" width="630px" height="390px">
+                  </div>
+                  <div class="down-content">
+                    <a href="{% url 'category' name=post.category %}"><span>{{post.category}}</span></a>
+                    <a href="{% url 'post_details' title=post.title %}">
+                      <h4>{{post.title}}</h4>
+                    </a>
+                    <ul class="post-info">
+                      <li><a>{{post.post_by}}</a></li>
+                      <li><a>{{post.date}}</a></li>
+                      <li><a>{{post.views}} views</a></li>
+                    </ul>
+                    <p>{{post.desc|truncatechars:430}}</p>
+
+                  </div>
+                </div>
+                {%endfor%}
+              </div>
+
+              <div class="col-lg-12">
+                <div class="main-button">
+                  <a href="{% url 'blog'%}">View All Posts</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="sidebar-item search">
+                  <form id="search_form" name="gs" method="GET" action="{% url 'search' %}">
+                    <input type="search" name="search" class="searchText" placeholder="type to search..." autocomplete="on">
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="sidebar-item recent-posts">
+                  <div class="sidebar-heading">
+                    <h2>Recent Posts</h2>
+                  </div>
+                  <div class="content">
+                    <ul>
+                      {% for post in pop_post%}
+                      <li><a href="{%url 'post_details' title=post.title%}">
+                          <h5>{{post.title}}</h5>
+                          <span>{{post.date}}</span>
+                        </a></li>
+                      {%endfor%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="sidebar-item tags">
+                  <div class="sidebar-heading">
+                    <h2>Category</h2>
+                  </div>
+                  <div class="content">
+                    <ul>
+                      {% for category in cat%}
+                      <li><a href="{% url 'category' name=category.name%}">{{category.name}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+
+</body>
+</html>

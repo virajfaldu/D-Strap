@@ -1,0 +1,140 @@
+* {
+    margin    : 0px;
+    padding   : 0px;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+    width          : 100vw;
+    height         : 100vh;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    position       : relative;
+    overflow       : hidden;
+}
+
+.container .shape-1 {
+    height          : 200px;
+    width           : 200px;
+    position        : absolute;
+    border-radius   : 50%;
+    background-image: linear-gradient(180deg, rgb(80, 191, 235) 0%, rgb(217, 235, 241) 100%);
+    top             : -80px;
+    left            : -65px;
+    z-index         : -1;
+}
+
+.container .shape-2 {
+    height          : 200px;
+    width           : 200px;
+    position        : absolute;
+    border-radius   : 50%;
+    background-image: linear-gradient(180deg, rgb(80, 191, 235) 0%, rgb(217, 235, 241) 100%);
+    bottom          : -80px;
+    right           : -65px;
+    z-index         : -1;
+    transform       : rotate(180deg);
+}
+
+.container .notice-box {
+    width  : 390px;
+    padding: 20px 30px;
+    background-color: white;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3),
+        6px 6px 10px 2px rgb(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.container .notice-box .title {
+    margin-top : 10px;
+    color      : #b81b2a;
+    font-size  : 3rem;
+    font-family: 'Goldman', cursive;
+    font-family: 'Merriweather', serif;
+}
+
+.notice-box .detail {
+    font-size  : 2rem;
+    margin-top : 20px;
+    line-height: 30px;
+    text-align : justify;
+}
+
+.notice-box .buttons {
+    width          : 100%;
+    display        : flex;
+    justify-content: space-between;
+    margin-top     : 30px;
+}
+
+.notice-box .buttons button {
+    width         : 48%;
+    padding       : 7px 0px;
+    color         : white;
+    font-size     : 1.4rem;
+    background    : #3271ca;
+    outline       : none;
+    border        : none;
+    border-radius : 2px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.notice-box .buttons button a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.notice-box .buttons #login {
+    background: #2ea44f;
+}
+
+.notice-box .buttons button:hover {
+    background: #2865bb;
+    cursor    : pointer;
+}
+
+.notice-box .buttons #login:hover {
+    background: #249143;
+}
+
+@media(max-width:460px) {
+    html {
+        font-size: 55%;
+    }
+
+    .container .notice-box {
+        width : 285px;
+    }
+
+    .notice-box .detail{
+        line-height: 28px;
+    }
+}
+
+@media(max-width:330px) {
+    html {
+        font-size: 50%;
+    }
+
+    .container .notice-box {
+        width  : 250px;
+        padding: 20px;
+    }
+
+    .notice-box .detail {
+        margin-top: 10px;
+        line-height: 25px;
+    }
+
+    .notice-box .buttons {
+        margin-top: 20px;
+    }
+}

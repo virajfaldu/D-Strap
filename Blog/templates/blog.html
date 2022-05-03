@@ -1,0 +1,131 @@
+{%extends 'basic.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %}
+<title>D-Strap || Blog</title>
+{%endblock%}
+
+
+<body>
+
+  {% block content%}
+  <!-- Page Content -->
+  <!-- Banner Starts Here -->
+  <div class="heading-page header-text">
+    <section class="page-heading">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="text-content">
+              <h4>Recent Posts</h4>
+              <h2>Our Recent Blog Entries</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Banner Ends Here -->
+
+
+  <section class="blog-posts grid-system">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="all-blog-posts">
+            <div class="row">
+              {% for post in posts%}
+              <div class="col-lg-6">
+                <div class="blog-post">
+                  <div class="blog-thumb">
+                    <img src="/media/{{post.img}}" alt="" width="350px" height="230px">
+                  </div>
+                  <div class="down-content">
+                    <a href="{% url 'category' name=post.category %}"><span>{{post.category}}</span></a>
+                    <a href="{% url 'post_details' title=post.title %}">
+                      <h4>{{post.title|truncatechars:25}}</h4>
+                    </a>
+                    <ul class="post-info">
+                      <li><a href="#">{{post.post_by}}</a></li>
+                      <li><a href="#">{{post.date}}</a></li>
+                      <li><a href="#">{{post.views}} views</a></li>
+                    </ul>
+                    <p>{{post.desc|truncatechars:140}}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor%}
+              <div class="col-lg-12">
+                <ul class="page-numbers">
+                  {% if posts.has_previous%}
+                  <li><a href="?page={{posts.previous_page_number}}"><i class="fa fa-angle-double-left"
+                        style="margin-top:17px"></i></a></li>
+                  <li><a href="?page={{posts.previous_page_number}}">{{posts.previous_page_number}}</a></li>
+                  {%endif%}
+                  <li class="active"><a href="?page={{posts.number}}">{{posts.number}}</a></li>
+                  {% if posts.has_next%}
+                  <li><a href="?page={{posts.next_page_number}}">{{posts.next_page_number}}</a></li>
+                  <li><a href="?page={{posts.next_page_number}}"><i class="fa fa-angle-double-right"
+                        style="margin-top:17px"></i></a></li>
+                  {%endif%}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="sidebar-item search">
+                  <form id="search_form" name="gs" method="GET" action="#">
+                    <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="sidebar-item recent-posts">
+                  <div class="sidebar-heading">
+                    <h2>Recent Posts</h2>
+                  </div>
+                  <div class="content">
+                    <ul>
+                      {%for post in pop_post%}
+                      <li><a href="{% url 'post_details' title=post.title %}">
+                          <h5>{{post.title}}</h5>
+                          <span>{{post.date}}</span>
+                        </a></li>
+                      {%endfor%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="sidebar-item tags">
+                <div class="sidebar-heading">
+                  <h2>Category</h2>
+                </div>
+                <div class="content">
+                  <ul>
+                    {% for category in cat%}
+                    <li><a href="{% url 'category' name=category.name%}">{{category.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  {% endblock %}
+</body>
+
+</html>

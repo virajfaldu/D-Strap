@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Strap || Add Post</title>
+    <!--------------------------------font-awesome-------------------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--------------------------------add-post css file-------------------------------->
+    {% if user.is_authenticated %}
+    <link rel="stylesheet" href="{% static 'Blog/assets/css/add_post.css'%}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'Blog/assets/css/notice.css'%}">
+    {% endif %}
+    <!--------------------------------font style link-------------------------------->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <!--------------------------------google captcha link-------------------------------->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</header>
+
+<body>
+    {% for message in messages %}
+    <script>
+        alert('{{message}}')
+    </script>
+    {% endfor %}
+    <div class="container">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+
+        {% if user.is_authenticated %}
+        <form class="addpost" spellcheck="false" action="{%url 'add_post'%}" method="POST" enctype="multipart/form-data">
+            <div class="title">
+                {% csrf_token %}
+                <p>create your post</p>
+            </div>
+            <!-- <div class="success-alert">
+                <h3>your addpost added succeessfully</h3>
+            </div>
+            <div class="danger-alert">
+                <h3>your addpost added succeessfully</h3>
+            </div> -->
+            <div class="user-title">
+                <h3>title</h3>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="description">
+                <h3>description</h3>
+                <textarea name="description" cols="85" rows="7" required></textarea>
+            </div>
+            <div class="forflex">
+                <div>
+                    <div class="category">
+                        <h3>category&nbsp;&nbsp;</h3>
+                        <select name="category">
+                            {%for cate in cat%}
+                            <option>{{cate.name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="choose-file">
+                        <h3>select&nbsp;image</h3>
+                        <label class="file-button"><i class="fa fa-cloud-upload"></i> upload
+                            <input type="file" name="image" accept="image/*">
+                    </div>
+                </div>
+                <div class="captcha">
+                    <div class="g-recaptcha" data-sitekey="6LfYA9YaAAAAAK4AYjnVJaECgHtibrHGnJtCl6JK"></div>
+                </div>
+            </div>
+            <div class="submit">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+        {%else%}
+        <div class="notice-box">
+            <div class="title">
+                <h3>Notice!</h3>
+            </div>
+            <div class="detail">
+                <p>we are so sorry to say , you can not add a post without login.
+                    if you want to add a post , first you should login or signup in our blog
+                    then you can add post successfully and enjoy our blog and all facility
+                </p>
+            </div>
+            <div class="buttons">
+                <button onclick="location.href='{% url 'home'%}'">Cancle</button>
+                <button id="login" onclick="location.href='{% url 'login'%}'">login</button>
+            </div>
+        </div>
+        {%endif%}
+    </div>
+
+</body>
+
+</html>

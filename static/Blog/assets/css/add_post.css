@@ -1,0 +1,299 @@
+* {
+    margin        : 0px;
+    padding       : 0px;
+    box-sizing    : border-box;
+    text-transform: capitalize;
+}
+
+.container {
+    width          : 100%;
+    min-height     : 100vh;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    position       : relative;
+    overflow       : hidden;
+}
+
+.container .shape-1 {
+    height          : 200px;
+    width           : 200px;
+    position        : absolute;
+    border-radius   : 50%;
+    background-image: linear-gradient(180deg, rgb(80, 191, 235) 0%, rgb(217, 235, 241) 100%);
+    top             : -80px;
+    left            : -65px;
+    z-index         : -1;
+}
+
+.container .shape-2 {
+    height          : 200px;
+    width           : 200px;
+    position        : absolute;
+    border-radius   : 50%;
+    background-image: linear-gradient(180deg, rgb(80, 191, 235) 0%, rgb(217, 235, 241) 100%);
+    bottom          : -80px;
+    right           : -65px;
+    z-index         : -1;
+    transform       : rotate(180deg);
+}
+
+.container .addpost {
+    border       : 2px solid rgb(49, 167, 214);
+    border-radius: 10px;
+    padding      : 30px 40px;
+    width        : 80%;
+    background   : white;
+    margin: 20px 0px;
+}
+
+.container .success-alert {
+    color           : #155724;
+    background-color: #d4edda;
+    border-color    : #aee2ba;
+    border-radius   : 4px;
+}
+
+.container .success-alert h3 {
+    padding: 10PX;
+}
+
+.container .danger-alert {
+    color           : #721c24;
+    background-color: #f8d7da;
+    border-color    : #721c24;
+    border-radius   : 4px;
+}
+
+.container .danger-alert h3 {
+    color           : #721c24;
+    padding: 10PX;
+}
+
+.container .title {
+    text-align    : center;
+    padding-bottom: 20px;
+    font-family   : 'Noto Serif', serif;
+    font-size     : 24px;
+    letter-spacing: .5px;
+    color         : rgb(54, 52, 52);
+}
+
+.addpost h3 {
+    padding-top   : 20px;
+    font-family   : 'Lexend Deca', sans-serif;
+    font-size     : 14px;
+    font-weight   : lighter;
+    padding-bottom: 4px;
+    color         : rgb(39, 37, 37);
+
+}
+
+.addpost .user-title input {
+    width        : 100%;
+    height       : 30px;
+    border       : 1.5px solid rgb(196, 196, 196);
+    border-radius: 5px;
+    color        : rgb(29, 27, 27);
+    padding-left : 10px;
+    font-weight  : bolder;
+    outline      : none;
+}
+
+.addpost input:focus,
+.addpost textarea:focus {
+    border-color: rgb(10, 150, 206) !important;
+    box-shadow  : 0px 0px 3px 1px rgb(118, 202, 235);
+}
+
+.addpost .description textarea {
+    font-family   : none;
+    font-size     : 15px;
+    border        : 1.5px solid rgb(196, 196, 196);
+    border-radius : 5px;
+    padding       : 10px 10px;
+    font-weight   : bold;
+    color         : rgb(61, 59, 59);
+    text-transform: none;
+    resize        : none;
+    width         : 100%;
+    outline       : none;
+}
+
+.addpost .category {
+    display       : flex;
+    padding-top   : 5px;
+    padding-bottom: 15px;
+}
+
+.addpost .category select {
+    width        : 140px;
+    margin-top   : 16px;
+    margin-left  : 18px;
+    padding      : 5px 18px 5px 10px;
+    border       : 1.5px solid rgb(196, 196, 196);
+    border-radius: 5px;
+    background   : white;
+    color        : #1f1e1e;
+    cursor       : pointer;
+    outline      : none;
+}
+
+.addpost .category select:hover {
+    color           : #fff;
+    background-color: #343a40;
+}
+
+.addpost .choose-file {
+    display    : flex;
+    align-items: center;
+}
+
+.addpost .choose-file input[type="file"] {
+    display   : none;
+    outline   : none;
+    margin-top: 20px;
+}
+
+.addpost .choose-file label {
+    margin-left  : 10px;
+    margin-top   : 15px;
+    padding      : 5px 18px 5px 10px;
+    display      : inline-block;
+    color        : #312e2e;
+    border       : 1.5px solid rgb(196, 196, 196);
+    border-radius: 5px;
+    cursor       : pointer;
+    font-size    : .9rem;
+}
+
+.addpost .choose-file label:hover {
+    color           : #fff;
+    background-color: #343a40;
+}
+
+.addpost .choose-file .fa-check-circle {
+    color      : green;
+    font-size  : 20px;
+    margin-top : 15px;
+    margin-left: 10px;
+}
+
+.addpost .captcha {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : 100%;
+}
+
+.addpost .g-recaptcha {
+    margin-top: 10px;
+    outline   : none;
+
+}
+
+.addpost .submit button {
+    width           : 100%;
+    margin-top      : 25px;
+    padding         : 8px 23px;
+    font-size       : 16px;
+    font-family     : 'Lexend Deca', sans-serif;
+    color           : #fff;
+    border          : none;
+    background-color: #17a2b8;
+    border-color    : #17a2b8;
+    border-radius   : 6px;
+    outline         : none;
+    cursor          : pointer;
+}
+
+.addpost .submit button:hover {
+    background: #0790a5;
+}
+
+/* ----------- responsive area -----------*/
+
+@media(max-width:480px) {
+    .container .addpost {
+        padding: 30px 30px;
+        width: 88%;
+    }
+
+    .container .shape-1 {
+        top : -90px;
+        left: -60px;
+    }
+
+    .container .shape-2 {
+        bottom: -90px;
+        right : -60px
+    }
+
+    .addpost .description textarea {
+        height: 100px;
+    }
+
+    .addpost .g-recaptcha {
+        margin-top: 30px;
+    }
+}
+
+@media(max-width:400px) {
+
+    .container .title{
+        padding-bottom: 20px;
+    }
+    .container .success-alert h3,.container .danger-alert h3{
+        font-size: .8rem;
+    }
+    .container .shape-1 {
+        left: -80px;
+    }
+
+    .container .shape-2 {
+        right: -80px
+    }
+
+    .addpost .captcha {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        width          : 100%;
+    }
+
+    .addpost .g-recaptcha {
+        transform       : scale(0.77);
+        transform-origin: 0 0;
+        margin-left     : 70px;
+        margin-bottom   : -20px;
+    }
+
+    .addpost .description textarea {
+        height: 90px;
+    }
+}
+
+@media(max-width:364px) {
+
+    .container .title{
+        padding-bottom: 10px;
+        font-size: 1.3rem;
+    }
+    .container .success-alert {
+        margin-top: 10px;
+    }
+
+    .container .addpost {
+        padding: 20px;
+    }
+}
+
+@media(max-width:320px) {
+
+    .addpost .g-recaptcha {
+        transform: scale(0.67);
+        margin-left: 100px;
+    }
+
+}
